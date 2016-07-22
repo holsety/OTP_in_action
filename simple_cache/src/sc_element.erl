@@ -30,7 +30,7 @@
   code_change/3]).
 
 -define(SERVER, ?MODULE).
--define(DEFAULT_LEASE_TIME, (60*60*24)).
+-define(DEFAULT_LEASE_TIME, (60)).
 
 -record(state, {value, lease_time, start_time}).
 
@@ -44,7 +44,7 @@
 %%
 %% @end
 %%--------------------------------------------------------------------
--spec(start_link(Value, LeaseTime) ->
+-spec(start_link(_Value, _LeaseTime) ->
   {ok, Pid :: pid()} | ignore | {error, Reason :: term()}).
 start_link(Value, LeaseTime) ->
   gen_server:start_link({local, ?SERVER}, ?MODULE, [Value, LeaseTime], []).
